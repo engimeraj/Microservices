@@ -17,6 +17,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+    // http://localhost:8080/api/getUser/{id}
     @PostMapping("/saveUser")
     public ResponseEntity<?> createUser(@RequestBody UserDto dto){
         userService.saveUserDetail(dto);
@@ -28,6 +29,7 @@ public class UserController {
         UserDto user = userService.getById(id);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
+    //http://localhost:8080/api/getAllUser
     @GetMapping("/getAllUser")
     public ResponseEntity<PostResponse> getAll(
             @RequestParam(value = "pageNumber" ,defaultValue = "0",required = false)Integer pageNumber,
